@@ -18,14 +18,11 @@ function App() {
     <>
        <ResponsiveAppBar />
     
-       <Routes>  <Route path='/' element={<HomePage/>}/>
-
-       {isAuthenticated ? 
-       <>
-      <Route path='/Dashboard' element={<Dashboard/>}/>
-      <Route path='/Loan Application' element={<Loan_App/>}/>
-      <Route path='/Loan Reports' element={<Loan_reports/>}/>
-      </> : "hello" }
+       <Routes>  
+      <Route path='/' element={<HomePage/>}/>
+      <Route path='Dashboard' element={<Dashboard/>}/>
+      <Route path='Loan Application' element={<Loan_App/>}/>
+      <Route path='Loan Reports' element={<Loan_reports/>}/>
      </Routes> 
       
     </>

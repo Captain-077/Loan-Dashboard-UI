@@ -13,14 +13,17 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
-// import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const pages = ['Dashboard', 'Loan Application', 'Loan Reports'];
 const settings = ['Logout'];
-// const { user, isAuthenticated, isLoading } = useAuth0();
+
 
 
 function ResponsiveAppBar() {
+
+  const { user, isAuthenticated, isLoading,logout } = useAuth0();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -59,7 +62,9 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+
+            <Link style={{ textDecoration: "none", color: "white" }} to={`/`}>LOGO</Link>
+
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -93,15 +98,17 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center"> 
-                    
-                     <Link style={{textDecoration:"none", color:"black"}} to={`/${page}`}>
-                {page}
-                </Link> 
-                  
-                
-                
-                </Typography>
+                  <Typography textAlign="center">
+                    {isAuthenticated ?
+                      <Link style={{ textDecoration: "none", color: "black" }} to={`/${page}`}>
+                        {page}
+                      </Link>
+
+                      : ""}
+
+
+
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -132,11 +139,13 @@ function ResponsiveAppBar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-               
-               <Link style={{textDecoration:"none", color:"white"}} to={`/${page}`}>
-                {page}
-                </Link>
-              
+                {isAuthenticated ?
+                  <Link style={{ textDecoration: "none", color: "white" }} to={`/${page}`}>
+                    {page}
+                  </Link>
+
+                  : ""}
+
               </Button>
             ))}
           </Box>
@@ -165,7 +174,12 @@ function ResponsiveAppBar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  {isAuthenticated ?
+                      <Link style={{ textDecoration: "none", color: "black" }} onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+                        {setting}
+                      </Link>
+
+                      : ""}
                 </MenuItem>
               ))}
             </Menu>
