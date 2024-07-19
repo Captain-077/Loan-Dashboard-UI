@@ -18,7 +18,7 @@ export default function IntroSection() {
 
                 <div className="image"><img src={"https://img.freepik.com/free-vector/men-teamwork-with-briefcase-business-coins_24877-54774.jpg?t=st=1721239493~exp=1721243093~hmac=43d3c41ed6f687a4b69e6ec21bdec3ad8f86289c0b9794a7d05b00c8a02c3ee1&w=740"} alt="" /></div>
                 <div className="intro-content">
-                    <Typography variant="h3">
+                    <Typography variant="h2">
                         Welcome to Your Loan Management Portal
 
                     </Typography>
