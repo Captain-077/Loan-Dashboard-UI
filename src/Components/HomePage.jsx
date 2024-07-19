@@ -14,9 +14,7 @@ export default function HomePage() {
          
             <IntroSection/>
 
-            <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
-                Log Out
-            </button>
+    
         </>
     )
 }

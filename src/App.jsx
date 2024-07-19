@@ -4,14 +4,12 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import HomePage from './Components/HomePage'
 import { Outlet, Route, Routes } from 'react-router'
-import { Dashboard } from '@mui/icons-material'
 import Loan_App from './Menu_Pages/Loan_App'
 import Loan_reports from './Menu_Pages/Loan_reports'
 import ResponsiveAppBar from './Components/ResponsiveAppBar'
-import { useAuth0 } from '@auth0/auth0-react'
+import Dashboard from './Menu_Pages/Dashboard'
 
 function App() {
-  const { user, isAuthenticated, isLoading } = useAuth0();
 
 
   return (

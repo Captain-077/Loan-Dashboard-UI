@@ -6,10 +6,12 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { Link } from 'react-router-dom';
 
 
 export default function IntroSection() {
-    const { loginWithRedirect } = useAuth0();
+
+    const { loginWithRedirect, isAuthenticated } = useAuth0();
     return (
         <>
             <div className="intro-section">
@@ -23,8 +25,9 @@ export default function IntroSection() {
                     <Typography variant="body1" gutterBottom>
                         Access your personalized dashboard to manage your loan details, make payments, and track your loan status.
                     </Typography>
+                    {isAuthenticated ? <Link to={"/Dashboard"}><Button  variant="contained" color="success" mt={2}>Dashboard</Button></Link>
+                        : <Button onClick={() => loginWithRedirect()} variant="contained" mt={2}>Log in</Button>}
 
-                    <Button onClick={() => loginWithRedirect()} variant="contained" mt={2}>Log in</Button>
                 </div>
             </div>
         </>
